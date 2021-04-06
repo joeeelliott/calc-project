@@ -1,0 +1,63 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-weight: normal;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  background: linear-gradient(to right, #00AAFF, #00FF6C);  /* this gives the merged in background. to right means merge more on that side */
+}
+
+.calculator-grid {
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  min-height: 100vh;
+  grid-template-columns: repeat(4, 100px);
+  grid-template-rows: minmax(120px, auto) repeat(5, 100px);  /* minmax gives our grid the possibility to grow our grids. 120px is the smallest and auto means it can grow as big as required - NOTE this is for the purpose of the output only (the operand classes) for if there are big calculations in there. the buttons will never grow as they only have their set HTML values */
+}
+
+.calculator-grid > button {  /* this '>' selects all buttons */
+  cursor: pointer;
+  font-size: 2rem;
+  border: 1px solid white;
+  outline: none;    /* gets rid of any default button outline */
+  background-color: rgba(255, 255, 255, .75);  /*75% opaque*/
+}
+
+.calculator-grid > button:hover {
+  background-color: rgba(255, 255, 255, .9);  /*90% opaque so that when we hover over the button seems to 'light up'*/
+}
+
+.span-two {
+  grid-column: span 2;
+}
+
+.output {
+  grid-column: 1 / -1;  /* makes our output div at the top of our calculator fill the entire width of the grid row. -1 means to the end. */
+  background-color:rgba(0, 0, 0, .75);
+  display: flex;
+  align-items: flex-end;   /* on the right side of the calc */
+  justify-content: space-around;  /* as much space between the items (current and previous operand divs) as possible but with space above and below both divs */
+  flex-direction: column;
+  padding: 10px;
+  word-wrap: break-word;   /* allows for a break in the middle of words if they need to be wrapped */
+  word-break: break-all;   /* we are able to break all words */
+}
+
+.output .previous-operand {
+  color: rgba(255, 255, 255, .75);
+  font-size: 1.5rem;
+}
+
+.output .current-operand {
+  color: white;
+  font-size: 2.5rem;
+}
+
+
+
+
+
